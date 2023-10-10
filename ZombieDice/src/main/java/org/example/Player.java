@@ -3,21 +3,23 @@ package org.example;
 public class Player {
 
     private String name;
-    private int Score = 0;
+    private int score = 0;
 
     public String getName() {
         return this.name;
     }
 
     public int getScore() {
-        return this.Score;
-    }
-
-    public void setScore(int score) {
-        Score = score;
+        return this.score;
     }
 
     public Player(String name){
         this.name = name;
     }
+
+    public void addToScore(int score){
+        this.score += score;
+    }
+
+
 }

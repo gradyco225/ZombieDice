@@ -34,8 +34,6 @@ public class Dice {
 
         int randomNumber = (rand.nextInt(6)); //Generates a number between 0-5
 
-        System.out.println(randomNumber);
-
         output = this.getSymbol(randomNumber);
         return output;
     }

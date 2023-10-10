@@ -22,11 +22,13 @@ public class Main {
         //Debug Testing
         //diceRoller();
 
-        System.out.print("Enter a title for this game: ");
-        String name = userInput.nextLine();
-        List<Player> playerList = gatherPlayers();
-        game = new Game(name,playerList);
-        game.startNewRound();
+        game = new Game();
+
+        game.outputPlayerList();
+
+        game.startGame();
+
+        //game.startNewRound();
 
 
 
@@ -57,29 +59,6 @@ public class Main {
         }
     }
 
-    private List<Player> gatherPlayers(){
-        List<Player> players = new ArrayList<>();
-        boolean validPlayers = false;
-        int playerCount = 0;
 
-        while(!validPlayers) {
-            System.out.print("How many players will there be?: ");
-            try {
-                playerCount = Integer.parseInt(userInput.nextLine());
-                if (playerCount < 1){
-                    throw new NumberFormatException();
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Number of players is invalid");
-            }
-        }
-
-        for (int i = 0; i < playerCount; i++) {
-            System.out.print("Enter name for player " + (i + 1) + ": ");
-            players.add(new Player(userInput.nextLine()));
-        }
-
-        return players;
-    }
 
 }
