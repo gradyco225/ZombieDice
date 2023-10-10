@@ -1,0 +1,24 @@
+Game
+	Name (string)
+	Players (List<Player>)
+	Rounds (List<Round>)
+	
+Round
+	RoundNumber (int)
+	ActivePlayer (Player)
+	Score (int)
+	Strikes (int)
+	Footprints (int)
+	CupDice (List<Dice>)
+	UsedDice (List<Dice>)
+	ActiveDice (List<Dice>)
+
+Player
+	FirstName (string)
+	LastName (string)
+	Score (int)
+	
+Dice
+	Id (int)
+	Color (string)
+	Symbol (string)
