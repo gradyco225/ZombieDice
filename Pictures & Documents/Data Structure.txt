@@ -19,6 +19,5 @@ Player
 	Score (int)
 	
 Dice
-	Id (int)
 	Color (string)
 	Symbol (string)

@@ -21,12 +21,15 @@ public class Main {
 
         //Debug Testing
         //diceRoller();
+        Player player1 = new Player("Connor");
+        Round round = new Round(1,player1);
+        round.playRound();
 
-        game = new Game();
-
-        game.outputPlayerList();
-
-        game.startGame();
+//        game = new Game();
+//
+//        game.outputPlayerList();
+//
+//        game.startGame();
 
         //game.startNewRound();
 
@@ -38,9 +41,9 @@ public class Main {
         System.out.println("Starting Dice Roller.");
 
         System.out.println("Generating New Dice.");
-        Dice greenDice = new Dice("Green");
-        Dice yellowDice = new Dice("Yellow");
-        Dice redDice = new Dice("Red");
+        Dice greenDice = new Dice(1,"Green");
+        Dice yellowDice = new Dice(2,"Yellow");
+        Dice redDice = new Dice(3,"Red");
 
         while (true){
             System.out.print("Select a dice to roll: ");

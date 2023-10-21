@@ -15,7 +15,7 @@ public class DiceTest {
     //@Test
     public void roll_Green_Dice_Returns_Brain_With_Value_Zero(){
         //Arrange
-        Dice die = new Dice("Green");
+        Dice die = new Dice(1,"Green");
 
         //Act
         String actual = die.rollDice();

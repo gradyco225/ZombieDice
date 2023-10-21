@@ -4,8 +4,10 @@ import java.util.Random;
 
 public class Dice {
 
+    private int id;
     private String color;
     private String[] symbol;
+    private String rolled_symbol = null;
 
     public String getColor() {
         return color;
@@ -15,7 +17,12 @@ public class Dice {
         return symbol[side];
     }
 
-    public Dice(String color){
+    public String getRolled_Symbol(){
+        return this.rolled_symbol;
+    }
+
+    public Dice(int id, String color){
+        this.id = id;
         this.color = color;
         if (color.equals("Green")){
             symbol = generateGreenDice();
@@ -28,6 +35,10 @@ public class Dice {
         }
     }
 
+    public void resetDiceRoll(){
+        this.rolled_symbol = null;
+    }
+
     public String rollDice(){
         String output = "";
         Random rand = new Random();
@@ -35,6 +46,7 @@ public class Dice {
         int randomNumber = (rand.nextInt(6)); //Generates a number between 0-5
 
         output = this.getSymbol(randomNumber);
+        this.rolled_symbol = output;
         return output;
     }
 

@@ -6,9 +6,7 @@ public class Menu {
 
     private static final String ROUND_OPTION_ROLL_DICE = "Roll Dice";
     private static final String ROUND_OPTION_END_TURN = "End Turn";
-    private static final String ROUND_OPTION_NEW_DICE = "Get new dice";
     private static final String[] ROUND_ROLL_OPTIONS = {ROUND_OPTION_ROLL_DICE, ROUND_OPTION_END_TURN};
-    private static final String[] ROUND_PASS_OPTIONS = {ROUND_OPTION_NEW_DICE, ROUND_OPTION_END_TURN};
 
     private Scanner userInput;
 
@@ -16,22 +14,28 @@ public class Menu {
         userInput = new Scanner(System.in);
     }
 
-    public void runRollMenu() {
-        runMenu(ROUND_ROLL_OPTIONS);
+    /**
+     *
+     * @return String - the round option selected
+     */
+    public String runRollMenu() {
+        return runMenu(ROUND_ROLL_OPTIONS);
     }
 
-    public void runPassMenu() {
-        runMenu(ROUND_PASS_OPTIONS);
-    }
 
-    public void runMenu(String[] currentMenu) {
+    /**
+     *
+     * @param currentMenu
+     * @return String the round option selected
+     */
+    private String runMenu(String[] currentMenu) {
         boolean runMenu = true;
 
         while (runMenu) {
 
             displayMenu(currentMenu);
 
-            System.out.println("\nPlease make a selection: ");
+            System.out.print("\nPlease make a selection: ");
             String selection = userInput.nextLine();
 
             try {
@@ -40,20 +44,17 @@ public class Menu {
                 String menuOption = currentMenu[selectionIndex];
 
                 if (menuOption.equals(ROUND_OPTION_ROLL_DICE) && currentMenu == ROUND_ROLL_OPTIONS) {
-
+                    return ROUND_OPTION_ROLL_DICE;
                 }
 
-                if (menuOption.equals(ROUND_OPTION_NEW_DICE) && currentMenu == ROUND_PASS_OPTIONS) {
-
-                }
-
-                if (menuOption.equals(ROUND_OPTION_END_TURN)) {
-                    runMenu = false;
+                if (menuOption.equals(ROUND_OPTION_END_TURN) && currentMenu == ROUND_ROLL_OPTIONS) {
+                    return ROUND_OPTION_END_TURN;
                 }
             } catch (Exception ex) {
                 System.out.printf("'%s' Is Not a Valid Option%n", selection);
             }
         }
+        return null;
     }
 
     private void displayMenu(String[] menu) {
