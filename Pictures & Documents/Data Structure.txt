@@ -2,15 +2,20 @@ Game
 	Name (string)
 	Players (List<Player>)
 	Rounds (List<Round>)
-	
+
 Round
 	RoundNumber (int)
+	Turns (List<Turn>)
+	Players (List<Player>)
+	
+Turn
+	TurnNumber (int)
 	ActivePlayer (Player)
 	Score (int)
 	Strikes (int)
-	Footprints (int)
 	CupDice (List<Dice>)
 	UsedDice (List<Dice>)
+	ShotgunDice (List<Dice>)
 	ActiveDice (List<Dice>)
 
 Player

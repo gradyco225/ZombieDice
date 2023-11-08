@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -22,14 +20,14 @@ public class Main {
         //Debug Testing
         //diceRoller();
         Player player1 = new Player("Connor");
-        Round round = new Round(1,player1);
-        round.playRound();
+        Turn turn = new Turn(1,player1);
+        turn.playTurn();
 
 //        game = new Game();
 //
 //        game.outputPlayerList();
 //
-//        game.startGame();
+//        game.playGame();
 
         //game.startNewRound();
 

@@ -13,17 +13,15 @@ public class DiceTest {
     }
 
     //@Test
-    public void roll_Green_Dice_Returns_Brain_With_Value_Zero(){
+    public void generate_Green_Dice_Returns_3_Brain_2_Footprint_1_Shotgun(){
         //Arrange
-        Dice die = new Dice(1,"Green");
 
         //Act
-        String actual = die.rollDice();
-        String expected = "Shotgun";
-        System.out.println("shotgun");
+        //String[] actual = generateGreenDice();
+        //String[] expected = {"Brain","Brain","Brain","Footprint","Footprint","Shotgun"};
 
         //Assert
-        Assert.assertEquals("It did not work",expected,actual);
+        //Assert.assertEquals("generateGreenDice did not equal expected output",expected,actual);
 
     }
 }

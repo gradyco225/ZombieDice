@@ -35,12 +35,12 @@ public class Game {
         this.players = players;
     }
 
-    public void startGame() {
+    public void playGame() {
         while (!gameComplete) {
 
             for (Player p : players) {
                 createNewRound(p);
-                rounds.get(rounds.size() - 1).playRound(); //Play last round in the list (the one we just made)
+                rounds.get(rounds.size() - 1).playTurn(); //Play last turn in the list (the one we just made)
             }
 
             checkGameComplete();
@@ -57,8 +57,9 @@ public class Game {
     }
 
     public void createNewRound(Player currentPlayer) {
-        Round newRound = new Round(roundNumber + 1, currentPlayer);
-        this.rounds.add(newRound);
+        this.roundNumber++;
+        Round newRound = new Round(roundNumber, currentPlayer);
+        this.rounds.add(Round);
     }
 
     public void outputPlayerList() {
