@@ -25,7 +25,7 @@ public class Round {
 
     public void displayEndRound(){
         System.out.println();
-        System.out.println("-- Round Over --");
+        System.out.println("-- ROUND OVER --");
         System.out.println("Current Scores:");
         for (Player player : players) {
             System.out.println(player.getName() + "'s score is " + player.getScore());
@@ -33,6 +33,7 @@ public class Round {
     }
 
     public void displayNewTurnText(Player player) {
+        System.out.println();
         System.out.println("It is now " + player.getName() + "'s turn.");
     }
 

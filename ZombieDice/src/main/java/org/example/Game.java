@@ -44,7 +44,7 @@ public class Game {
     public void checkGameComplete() {
         for (Player player : this.players) {
             if (player.getScore() >= WINNING_COUNT) {
-                if (winner != null) { //There is not already a winner
+                if (winner == null) { //There is not already a winner
                     this.gameComplete = true;
                     this.winner = player;
                 }
