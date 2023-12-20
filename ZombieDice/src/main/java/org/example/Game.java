@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class Game {
     private String name;
-    private List<Player> players;
-    private List<Round> rounds = new ArrayList<>();
-    private int roundNumber = 1;
+    private List<Player> players = new ArrayList<>();
+    private Player winner;
+    private int roundNumber = 0;
     private boolean gameComplete = false;
     public final Scanner userInput = new Scanner(System.in);
     private final int WINNING_COUNT = 13;
@@ -19,10 +19,6 @@ public class Game {
 
     public List<Player> getPlayers() {
         return this.players;
-    }
-
-    public List<Round> getRounds() {
-        return this.rounds;
     }
 
     public Game() {
@@ -37,32 +33,31 @@ public class Game {
 
     public void playGame() {
         while (!gameComplete) {
-
-            for (Player p : players) {
-                createNewRound(p);
-                rounds.get(rounds.size() - 1).playTurn(); //Play last turn in the list (the one we just made)
-            }
-
+            Round currentRound = new Round(players);
+            currentRound.playRound();
             checkGameComplete();
         }
+        System.out.println("-- THE GAME IS OVER --");
+        System.out.println("The winner is " + winner.getName() + " with a final score of " + winner.getScore() + ".");
     }
 
     public void checkGameComplete() {
-        for (Player p : this.players) {
-            if (p.getScore() >= WINNING_COUNT) {
-                this.gameComplete = true;
-                break;
+        for (Player player : this.players) {
+            if (player.getScore() >= WINNING_COUNT) {
+                if (winner != null) { //There is not already a winner
+                    this.gameComplete = true;
+                    this.winner = player;
+                }
+                else { //There is a winner already
+                    if (player.getScore() > winner.getScore()){
+                        this.winner = player;
+                    }
+                }
             }
         }
     }
 
-    public void createNewRound(Player currentPlayer) {
-        this.roundNumber++;
-        Round newRound = new Round(roundNumber, currentPlayer);
-        this.rounds.add(Round);
-    }
-
-    public void outputPlayerList() {
+    public void displayPlayerList() {
         int counter = 1;
         for (Player p : this.getPlayers()) {
             System.out.println("Player " + counter + ": " + p.getName());
@@ -95,7 +90,8 @@ public class Game {
 
         for (int i = 0; i < playerCount; i++) {
             System.out.print("Enter name for Player " + (i + 1) + ": ");
-            this.players.add(new Player(userInput.nextLine()));
+            String name = userInput.nextLine();
+            this.players.add(new Player(name));
         }
 
         return this.players;

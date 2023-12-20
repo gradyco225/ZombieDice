@@ -6,37 +6,37 @@ public class Dice {
 
     private int id;
     private String color;
-    private String[] symbol;
-    private String rolled_symbol = null;
+    private String[] symbols;
+    private String rolledSymbol = null;
 
     public String getColor() {
         return color;
     }
 
     public String getSymbol(int side) {
-        return symbol[side];
+        return symbols[side];
     }
 
     public String getRolled_Symbol(){
-        return this.rolled_symbol;
+        return this.rolledSymbol;
     }
 
     public Dice(int id, String color){
         this.id = id;
         this.color = color;
         if (color.equals("Green")){
-            symbol = generateGreenDice();
+            symbols = generateGreenDice();
         }
         else if (color.equals("Yellow")){
-            symbol = generateYellowDice();
+            symbols = generateYellowDice();
         }
         else if (color.equals("Red")){
-            symbol = generateRedDice();
+            symbols = generateRedDice();
         }
     }
 
     public void resetDiceRoll(){
-        this.rolled_symbol = null;
+        this.rolledSymbol = null;
     }
 
     public String rollDice(){
@@ -46,7 +46,7 @@ public class Dice {
         int randomNumber = (rand.nextInt(6)); //Generates a number between 0-5
 
         output = this.getSymbol(randomNumber);
-        this.rolled_symbol = output;
+        this.rolledSymbol = output;
         return output;
     }
 

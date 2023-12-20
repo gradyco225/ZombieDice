@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class Turn {
 
-    private int turnNumber;
     private Player activePlayer;
     private int score = 0;
     private int strikes = 0;
@@ -21,8 +20,7 @@ public class Turn {
     private static final String TURN_OPTION_ROLL_DICE = "Roll Dice";
     private static final String TURN_OPTION_END_TURN = "End Turn";
 
-    public Turn(int turnNumber, Player activePlayer) {
-        this.turnNumber = turnNumber;
+    public Turn(Player activePlayer) {
         this.activePlayer = activePlayer;
         this.cupDice = generateCupDice();
     }
@@ -79,8 +77,8 @@ public class Turn {
         for (int numActiveDice = activeDice.size(); numActiveDice < AMOUNT_OF_ACTIVE_DICE; numActiveDice++){ //If current dice count is less than total active dice needed
             Random rand = new Random();
             int randomNumber = (rand.nextInt(cupDice.size())); //generate random number between 0 and the size of cupDice
-            activeDice.add(activeDice.size(),cupDice.get(randomNumber)); //add dice from cupDice at randomNumber location to end of activeDice
-            cupDice.remove(randomNumber);
+            activeDice.add(cupDice.get(randomNumber)); //add dice from cupDice at randomNumber location
+            cupDice.remove(cupDice.get(randomNumber)); //remove the die added to active dice
         }
     }
 
@@ -158,6 +156,7 @@ public class Turn {
     }
 
     private void displayEndTurn(){
+        System.out.println();
         System.out.println("TURN OVER");
         System.out.println("Final Turn Score: " + this.score);
         System.out.println("Final Player Score: " + this.activePlayer.getScore());

@@ -7,6 +7,8 @@ public class Main {
     public final Scanner userInput = new Scanner(System.in);
     public Game game;
 
+    public boolean active = true;
+
     public static void main(String[] args) {
         Main main = new Main();
         main.run();
@@ -19,19 +21,33 @@ public class Main {
 
         //Debug Testing
         //diceRoller();
-        Player player1 = new Player("Connor");
-        Turn turn = new Turn(1,player1);
-        turn.playTurn();
+        //Player player1 = new Player("Connor");
+        //Turn turn = new Turn(player1);
+        //turn.playTurn();
+        while(active) {
 
-//        game = new Game();
-//
-//        game.outputPlayerList();
-//
-//        game.playGame();
+            game = new Game();
 
-        //game.startNewRound();
+            game.displayPlayerList();
 
+            game.playGame();
 
+            while (true) {
+                System.out.println();
+                System.out.println("Do you want to play again? Y/N");
+                String input = userInput.nextLine();
+                if (input.equals("Y") || input.equals("y")){
+                    break;
+                }
+                if (input.equals("N") || input.equals("n")){
+                    active = false;
+                    break;
+                }
+                System.out.println("Invalid input. Please type Y or N.");
+            }
+
+        }
+        System.out.println("Thank you for playing Zombie Dice.");
 
     }
 
